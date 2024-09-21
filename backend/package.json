@@ -8,7 +8,9 @@
   },
   "scripts": {
     "start": "node server.js",
-    "backend": "nodemon server.js"
+    "backend": "nodemon server.js",
+    "data:import": "node seeder.js",
+    "data:destroy": "node seeder.js -d"
   },
   "license": "MIT",
   "dependencies": {
