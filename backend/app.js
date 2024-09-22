@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 import { notFoundHandler, errorHandler } from "./src/utils/error.js";
 import indexRoute from "./src/routes/index.route.js";
@@ -13,6 +14,7 @@ connectDB.apply();
 app.use([
   morgan("dev"),
   cors(),
+  cookieParser(),
   express.json(),
   express.urlencoded({ extended: true }),
 ]);

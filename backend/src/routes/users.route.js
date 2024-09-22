@@ -1,7 +1,12 @@
 import express, { Router } from "express";
-import { postRegister } from "../controllers/users.controller.js";
+import { getLogin, postRegister } from "../controllers/users.controller.js";
 const router = express.Router();
 
+/**
+ * @route GET /api/v1/users/login
+ * @access public
+ */
+router.get("/login", getLogin);
 /**
  * @route POST /api/v1/users/register
  * @access public
