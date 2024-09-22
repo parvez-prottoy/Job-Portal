@@ -1,7 +1,16 @@
 import express, { Router } from "express";
-import { getLogin, postRegister } from "../controllers/users.controller.js";
+import {
+  getLogin,
+  getLogout,
+  postRegister,
+} from "../controllers/users.controller.js";
 const router = express.Router();
 
+/**
+ * @route GET /api/v1/users/logout
+ * @access public
+ */
+router.get("/logout", getLogout);
 /**
  * @route GET /api/v1/users/login
  * @access public

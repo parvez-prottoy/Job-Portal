@@ -4,6 +4,24 @@ import jwt from "jsonwebtoken";
 import dev from "../../config/config.js";
 
 /**
+ * @route GET /api/v1/users/logout
+ * @description logout user
+ * @access public
+ */
+export const getLogout = async (_req, res) => {
+  try {
+    res.status(200).cookie("token", "", { maxAge: 0 }).json({
+      success: true,
+      message: "Logout successfully 🙂",
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error?.message,
+    });
+  }
+};
+/**
  * @route GET /api/v1/users/login
  * @description login user
  * @access public
