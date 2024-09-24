@@ -4,6 +4,49 @@ import jwt from "jsonwebtoken";
 import dev from "../../config/config.js";
 
 /**
+ * @route PATCH /api/v1/users/update-profile
+ * @description update user profile data
+ * @access public
+ */
+export const patchProfile = async (req, res) => {
+  try {
+    const { userName, bio, location, skills, resumeUrl, resumeName, photo } =
+      req.body || {};
+    let skillsArr;
+    if (skills) {
+      skillsArr = skills.split(","); // split the string into an array
+    }
+    const userId = req.id;
+    let user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        error: "User not found!",
+      });
+    }
+    // note: update user data
+    user.userName = userName ? userName : user.userName;
+    user.profile.bio = bio ? bio : user.profile.bio;
+    user.profile.location = location ? location : user.profile.location;
+    user.profile.skills = skills ? skillsArr : user.profile.skills;
+    user.profile.resumeUrl = resumeUrl ? resumeUrl : user.profile.resumeUrl;
+    user.profile.resumeName = resumeName ? resumeName : user.profile.resumeName;
+    user.profile.resumeName = resumeName ? resumeName : user.profile.resumeName;
+    user.profile.photo = photo ? photo : user.profile.photo;
+    await user.save();
+    res.status(200).json({
+      success: true,
+      message: "Profile update successfully 🙂",
+      data: user,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error?.message,
+    });
+  }
+};
+/**
  * @route GET /api/v1/users/logout
  * @description logout user
  * @access public

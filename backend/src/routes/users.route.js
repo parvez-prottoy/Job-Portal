@@ -2,10 +2,21 @@ import express, { Router } from "express";
 import {
   getLogin,
   getLogout,
+  patchProfile,
   postRegister,
 } from "../controllers/users.controller.js";
 const router = express.Router();
+import authentication from "../middlewares/authentication.middleware.js";
 
+/**
+ * @route PATCH /api/v1/users/update-profile
+ * @access public
+ */
+router.patch("/update-profile", authentication, patchProfile);
+/**
+ * @route GET /api/v1/users/login
+ * @access public
+ */
 /**
  * @route GET /api/v1/users/logout
  * @access public
