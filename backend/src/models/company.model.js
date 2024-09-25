@@ -5,6 +5,7 @@ const companySchema = new mongoose.Schema(
     name: {
       type: String,
       require: true,
+      unique: true, // unique constraint
     },
     founded: {
       type: String,
