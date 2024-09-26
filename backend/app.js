@@ -7,6 +7,7 @@ import { notFoundHandler, errorHandler } from "./src/utils/error.js";
 import indexRoute from "./src/routes/index.route.js";
 import usersRoute from "./src/routes/users.route.js";
 import companiesRoute from "./src/routes/companies.route.js";
+import jobsRoute from "./src/routes/jobs.route.js";
 
 const app = express();
 // note: connect mongoDB
@@ -23,6 +24,7 @@ app.use([
 app.use("/", indexRoute);
 app.use("/api/v1/users", usersRoute);
 app.use("/api/v1/companies", companiesRoute);
+app.use("/api/v1/jobs", jobsRoute);
 // note: error handler
 app.use(notFoundHandler);
 app.use(errorHandler);
