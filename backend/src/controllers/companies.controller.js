@@ -1,6 +1,41 @@
 import CompanyModel from "../models/company.model.js";
 
 /**
+ * @route PATCH /api/v1/companies/:companyId
+ * @description update company by company id
+ * @access public
+ */
+export const patchCompany = async (req, res) => {
+  try {
+    const { name, founded, email, location, website, logo } = req.body;
+    const companyId = req.params.companyId;
+    const company = await CompanyModel.findById(companyId);
+    if (!company) {
+      return res.status(404).json({
+        success: false,
+        error: "No company found!",
+      });
+    }
+    company.name = name ? name : company.name;
+    company.founded = founded ? founded : company.founded;
+    company.email = email ? email : company.email;
+    company.location = location ? location : company.location;
+    company.website = website ? website : company.website;
+    company.logo = logo ? logo : company.logo;
+    await company.save();
+    res.status(200).json({
+      success: true,
+      message: "Update company successfully 🙂",
+      data: company,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error?.message,
+    });
+  }
+};
+/**
  * @route GET /api/v1/companies/:companyId
  * @description get company by company id
  * @access public
