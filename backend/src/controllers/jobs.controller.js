@@ -2,6 +2,40 @@ import JobModel from "../models/job.model.js";
 
 /**
  * @route GET /api/v1/jobs
+ * @description get jobs by keyword
+ * @access public
+ */
+export const getJobsByKeyword = async (req, res) => {
+  try {
+    const keyword = req.query.keyword;
+    console.log(keyword);
+    const query = {
+      $or: [
+        {
+          title: { $regex: keyword, $options: "i" },
+        },
+        {
+          type: { $regex: keyword, $options: "i" },
+        },
+      ],
+    };
+    const jobs = await JobModel.find(query);
+    if (jobs < 0) {
+      return res.status(404).json({ success: false, message: "No job found!" });
+    }
+    res.status(200).json({
+      success: true,
+      data: jobs,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error?.message,
+    });
+  }
+};
+/**
+ * @route GET /api/v1/jobs
  * @description get all jobs
  * @access public
  */
