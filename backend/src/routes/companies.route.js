@@ -1,8 +1,16 @@
 import express from "express";
-import { postCompany } from "../controllers/companies.controller.js";
+import {
+  getCompanies,
+  postCompany,
+} from "../controllers/companies.controller.js";
 import authentication from "../middlewares/authentication.middleware.js";
 const router = express.Router();
 
+/**
+ * @route GET /api/v1/companies
+ * @access public
+ */
+router.get("/", authentication, getCompanies);
 /**
  * @route POST /api/v1/companies
  * @access public

@@ -1,6 +1,32 @@
 import CompanyModel from "../models/company.model.js";
 
 /**
+ * @route GET /api/v1/companies
+ * @description get companies by userId
+ * @access public
+ */
+export const getCompanies = async (req, res) => {
+  try {
+    const userId = req.id;
+    console.log(userId);
+    const companies = await CompanyModel.find({ userId });
+    if (!companies) {
+      return res
+        .status(404)
+        .json({ success: false, message: "No company found!" });
+    }
+    res.status(200).json({
+      success: true,
+      data: companies,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error?.message,
+    });
+  }
+};
+/**
  * @route POST /api/v1/companies
  * @description create new company
  * @access public
