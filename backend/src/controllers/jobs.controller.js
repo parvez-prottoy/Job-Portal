@@ -1,6 +1,29 @@
 import JobModel from "../models/job.model.js";
 
 /**
+ * @route GET /api/v1/jobs
+ * @description get all jobs
+ * @access public
+ */
+export const getJobs = async (_req, res) => {
+  try {
+    const jobs = await JobModel.find();
+    if (jobs < 0) {
+      return res.status(404).json({ success: false, message: "No job found!" });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: jobs,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error?.message,
+    });
+  }
+};
+/**
  * @route POST /api/v1/jobs
  * @description create new job
  * @access public
