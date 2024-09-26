@@ -1,6 +1,26 @@
 import JobModel from "../models/job.model.js";
 
 /**
+ * @route GET /api/v1/jobs/:jobId
+ * @description get job by id
+ * @access public
+ */
+export const getJobById = async (req, res) => {
+  try {
+    const { jobId } = req.params;
+    const job = await JobModel.findById(jobId);
+    res.status(200).json({
+      success: true,
+      data: job,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error?.message,
+    });
+  }
+};
+/**
  * @route GET /api/v1/jobs
  * @description get jobs by keyword
  * @access public
