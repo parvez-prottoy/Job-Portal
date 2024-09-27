@@ -3,7 +3,7 @@ import JobModel from "../models/job.model.js";
 /**
  * @route GET /api/v1/jobs/:jobId
  * @description get job by id
- * @access public
+ * @access Candidate
  */
 export const getJobById = async (req, res) => {
   try {
@@ -23,7 +23,7 @@ export const getJobById = async (req, res) => {
 /**
  * @route GET /api/v1/jobs
  * @description get jobs by keyword
- * @access public
+ * @access Candidate
  */
 export const getJobsByKeyword = async (req, res) => {
   try {
@@ -57,7 +57,7 @@ export const getJobsByKeyword = async (req, res) => {
 /**
  * @route GET /api/v1/jobs
  * @description get all jobs
- * @access public
+ * @access Candidate
  */
 export const getJobs = async (_req, res) => {
   try {
@@ -80,7 +80,7 @@ export const getJobs = async (_req, res) => {
 /**
  * @route POST /api/v1/jobs
  * @description create new job
- * @access public
+ * @access Employer
  */
 export const postJob = async (req, res) => {
   try {

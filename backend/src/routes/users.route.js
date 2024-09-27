@@ -10,26 +10,22 @@ import authentication from "../middlewares/authentication.middleware.js";
 
 /**
  * @route PATCH /api/v1/users/update-profile
- * @access public
+ * @access Candidate & Employer
  */
 router.patch("/update-profile", authentication, patchProfile);
 /**
- * @route GET /api/v1/users/login
- * @access public
- */
-/**
  * @route GET /api/v1/users/logout
- * @access public
+ * @access Candidate & Employer
  */
 router.get("/logout", getLogout);
 /**
  * @route GET /api/v1/users/login
- * @access public
+ * @access Candidate & Employer
  */
 router.get("/login", getLogin);
 /**
  * @route POST /api/v1/users/register
- * @access public
+ * @access Candidate & Employer
  */
 router.post("/register", postRegister);
 

@@ -6,7 +6,7 @@ import dev from "../../config/config.js";
 /**
  * @route PATCH /api/v1/users/update-profile
  * @description update user profile data
- * @access public
+ * @access Candidate & Employer
  */
 export const patchProfile = async (req, res) => {
   try {
@@ -49,7 +49,7 @@ export const patchProfile = async (req, res) => {
 /**
  * @route GET /api/v1/users/logout
  * @description logout user
- * @access public
+ * @access Candidate & Employer
  */
 export const getLogout = async (_req, res) => {
   try {
@@ -67,7 +67,7 @@ export const getLogout = async (_req, res) => {
 /**
  * @route GET /api/v1/users/login
  * @description login user
- * @access public
+ * @access Candidate & Employer
  */
 export const getLogin = async (req, res) => {
   try {
@@ -129,7 +129,7 @@ export const getLogin = async (req, res) => {
 /**
  * @route POST /api/v1/users/register
  * @description register new user
- * @access public
+ * @access Candidate & Employer
  */
 export const postRegister = async (req, res) => {
   try {

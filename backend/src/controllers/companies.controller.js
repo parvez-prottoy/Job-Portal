@@ -3,7 +3,7 @@ import CompanyModel from "../models/company.model.js";
 /**
  * @route PATCH /api/v1/companies/:companyId
  * @description update company by company id
- * @access public
+ * @access Employer
  */
 export const patchCompany = async (req, res) => {
   try {
@@ -38,7 +38,7 @@ export const patchCompany = async (req, res) => {
 /**
  * @route GET /api/v1/companies/:companyId
  * @description get company by company id
- * @access public
+ * @access Employer
  */
 export const getCompanyById = async (req, res) => {
   try {
@@ -64,7 +64,7 @@ export const getCompanyById = async (req, res) => {
 /**
  * @route GET /api/v1/companies
  * @description get companies by userId
- * @access public
+ * @access Employer
  */
 export const getCompanies = async (req, res) => {
   try {
@@ -90,7 +90,7 @@ export const getCompanies = async (req, res) => {
 /**
  * @route POST /api/v1/companies
  * @description create new company
- * @access public
+ * @access Employer
  */
 export const postCompany = async (req, res) => {
   try {

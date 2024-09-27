@@ -10,22 +10,22 @@ import {
 const router = express.Router();
 /**
  * @route GET /api/v1/jobs/:jobId
- * @access public
+ * @access Candidate
  */
 router.get("/:jobId", getJobById);
 /**
  * @route GET /api/v1/jobs
- * @access public
+ * @access Candidate
  */
 router.get("/", getJobsByKeyword);
 /**
  * @route GET /api/v1/jobs
- * @access public
+ * @access Candidate
  */
 router.get("/", getJobs);
 /**
  * @route POST /api/v1/jobs
- * @access public
+ * @access Employer
  */
 router.post("/", authentication, postJob);
 
